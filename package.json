@@ -1,0 +1,26 @@
+{
+  "name": "parsedate",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amin-Azimi/ParseDate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amin-Azimi/ParseDate/issues"
+  },
+  "homepage": "https://github.com/Amin-Azimi/ParseDate#readme",
+  "dependencies": {
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.34"
+  }
+}
