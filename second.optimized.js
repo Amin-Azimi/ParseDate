@@ -1,28 +1,31 @@
 import moment from 'moment-timezone'; 
 
-const OptimizedParseDate =(dates,dateRange)=>{
+const SecondOptimizedParseDate =(dates,dateRange)=>{
 
     optimizedFind(dates,dateRange);
 }
-const optimizedFind = (dates,dateRange)=>{
-    console.time("optimized dates selection:");
+const optimizedFind = async (dates,dateRange)=>{
+    console.time("More optimized dates selection:");
     let {startDate,endDate} = {...dateRange};
     //convert ranges of data to UTC
     startDate = moment.tz(startDate,"UTC").format();
     endDate = moment.tz(endDate,"UTC").format();
-    // console.log('ennnnnnnnnnnd',startDate,endDate,dateRange);
     // console.log(`original start ${dateRange.startDate} and conveted to UTC ${startDate}`);
     //selecting dates in range second solution
-    const lowestIndex = dates.indexOf(getStartDateIndex(dates,startDate));
-    // console.log('final:', lowestIndex,dates[lowestIndex],dates[lowestIndex+1]);
-    const highestIndex = dates.indexOf(getStartDateIndex(dates,endDate));
-    // console.log('final:', highestIndex,dates[highestIndex],dates[highestIndex]);
     
+    let lowestIndex = 0
+    let highestIndex = 0;
+    const values = await  Promise.allSettled([
+        Promise.resolve(getStartDateIndex(dates,startDate)),
+        Promise.resolve(getStartDateIndex(dates,endDate))
+    ]);
+    lowestIndex = dates.indexOf(values[0].value);
+    highestIndex = dates.indexOf(values[1].value);
     //selecting dates in date range
     const optimizedRange = dates.slice(lowestIndex,highestIndex).map(item => moment.tz(item,"Europe/Berlin"));
     // console.log(optimizedRange.length,optimizedRange[0],
     //     optimizedRange[optimizedRange.length-1]);
-    console.timeEnd("optimized dates selection:");
+    console.timeEnd("More optimized dates selection:");
     console.log(`the length of optimized found array is ${optimizedRange.length}`)
 
 }
@@ -40,4 +43,4 @@ const getStartDateIndex=(newArr,startValue)=>{
         return  getStartDateIndex(newArr.slice(middleIndex),startValue);
 }
 
-export default OptimizedParseDate;
+export default SecondOptimizedParseDate;

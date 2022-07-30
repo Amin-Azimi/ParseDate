@@ -3,10 +3,11 @@ import OptimizedParseDate from './optimized.parse.date.js';
 import ParseDate from './parse.date.js'
 
 import createDates from './create.dates.js';
+import SecondOptimizedParseDate from './second.optimized.js';
 const startDate = new Date();
 startDate.setDate(startDate.getUTCDate()-209);
 //creatin an array hourly based dates
-const dates = createDates(5000,startDate);
+const dates = createDates(50000,startDate);
  //creating date range object
  const firstRandomIndex = Math.floor( Math.random()*(dates.length-1));
  const secondRandomIndex = Math.floor(Math.random()*(dates.length-1));
@@ -17,3 +18,4 @@ const dates = createDates(5000,startDate);
 
 ParseDate(dates,dateRange);
 OptimizedParseDate(dates,dateRange);
+SecondOptimizedParseDate(dates,dateRange);
