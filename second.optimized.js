@@ -10,7 +10,6 @@ const optimizedFind = async (dates,dateRange)=>{
     //convert ranges of data to UTC
     startDate = moment.tz(startDate,"UTC").format();
     endDate = moment.tz(endDate,"UTC").format();
-    // console.log(`original start ${dateRange.startDate} and conveted to UTC ${startDate}`);
     //selecting dates in range second solution
     
     let lowestIndex = 0
@@ -23,10 +22,8 @@ const optimizedFind = async (dates,dateRange)=>{
     highestIndex = dates.indexOf(values[1].value);
     //selecting dates in date range
     const optimizedRange = dates.slice(lowestIndex,highestIndex).map(item => moment.tz(item,"Europe/Berlin"));
-    // console.log(optimizedRange.length,optimizedRange[0],
-    //     optimizedRange[optimizedRange.length-1]);
     console.timeEnd("More optimized dates selection:");
-    console.log(`the length of optimized found array is ${optimizedRange.length}`)
+    console.log(`the length of optimized found array is ${optimizedRange.length} \n`)
 
 }
 
