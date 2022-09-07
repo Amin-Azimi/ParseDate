@@ -1,0 +1,417 @@
+Statistical profiling result from isolate-0x5dc2350-79653-v8.log, (289 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+    181   62.6%          /usr/local/bin/node
+     13    4.5%          /usr/lib/x86_64-linux-gnu/libc-2.31.so
+      2    0.7%          /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      1    0.3%    1.1%  Function: ^prepareConfig /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2953:27
+      1    0.3%    1.1%  Function: ^moment.updateOffset /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:605:33
+      1    0.3%    1.1%  Function: ^charCodeToInt /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:57:24
+
+ [C++]:
+   ticks  total  nonlib   name
+     33   11.4%   35.5%  __write
+     20    6.9%   21.5%  fwrite
+     11    3.8%   11.8%  std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)
+     10    3.5%   10.8%  _IO_file_xsputn
+      5    1.7%    5.4%  __GI___pthread_mutex_unlock
+      3    1.0%    3.2%  std::ostream::sentry::sentry(std::ostream&)
+      2    0.7%    2.2%  __libc_malloc
+      1    0.3%    1.1%  std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, long) const
+      1    0.3%    1.1%  std::ostream& std::ostream::_M_insert<long>(long)
+      1    0.3%    1.1%  cfree
+      1    0.3%    1.1%  __pthread_cond_wait
+      1    0.3%    1.1%  __mprotect
+      1    0.3%    1.1%  _IO_default_xsputn
+
+ [Summary]:
+   ticks  total  nonlib   name
+      3    1.0%    3.2%  JavaScript
+     90   31.1%   96.8%  C++
+      5    1.7%    5.4%  GC
+    196   67.8%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+     20   31.3%    6.9%  __write
+     17   26.6%    5.9%  fwrite
+      9   14.1%    3.1%  std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)
+      9   14.1%    3.1%  _IO_file_xsputn
+      3    4.7%    1.0%  std::ostream::sentry::sentry(std::ostream&)
+      2    3.1%    0.7%  __libc_malloc
+      1    1.6%    0.3%  std::ostreambuf_iterator<char, std::char_traits<char> > std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::_M_insert_int<long>(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, long) const
+      1    1.6%    0.3%  std::ostream& std::ostream::_M_insert<long>(long)
+      1    1.6%    0.3%  __mprotect
+      1    1.6%    0.3%  _IO_default_xsputn
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+    181   62.6%  /usr/local/bin/node
+    142   78.5%    /usr/local/bin/node
+     37   26.1%      Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     37  100.0%        Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      8   21.6%          Function: ~<anonymous> node:internal/webstreams/adapters:1:1
+      8  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      7   18.9%          Function: ~<anonymous> node:internal/modules/esm/loader:1:1
+      7  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      4   10.8%          Function: ~<anonymous> node:tty:1:1
+      4  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      4   10.8%          Function: ~<anonymous> node:internal/webstreams/readablestream:1:1
+      4  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    8.1%          Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      3  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2    5.4%          LazyCompile: ~initCJSParse node:internal/modules/esm/translators:58:28
+      2  100.0%            LazyCompile: ~commonjsStrategy node:internal/modules/esm/translators:146:60
+      2    5.4%          Function: ~<anonymous> node:internal/process/esm_loader:1:1
+      2  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2    5.4%          Function: ~<anonymous> node:internal/fs/promises:1:1
+      2  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.7%          LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      1  100.0%            LazyCompile: ~getStdout node:internal/bootstrap/switches/is_main_thread:125:19
+      1    2.7%          Function: ~<anonymous> node:net:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.7%          Function: ~<anonymous> node:internal/modules/esm/resolve:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.7%          Function: ~<anonymous> node:internal/modules/esm/module_map:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.7%          Function: ~<anonymous> node:internal/modules/cjs/loader:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     18   12.7%      LazyCompile: ~compileFunction node:vm:308:25
+     18  100.0%        LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1011:18
+     18  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1051:37
+     18  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1106:37
+     11    7.7%      /usr/local/bin/node
+      2   18.2%        LazyCompile: ~parsePackageName node:internal/modules/esm/resolve:799:26
+      2  100.0%          LazyCompile: ~packageResolve node:internal/modules/esm/resolve:838:24
+      2  100.0%            LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:926:23
+      2   18.2%        Function: ^unescapeFormat /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:814:28
+      2  100.0%          Function: ^getParseRegexForToken /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:805:35
+      2  100.0%            Function: ^configFromStringAndFormat /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2748:39
+      1    9.1%        LazyCompile: ~resolveExports node:internal/modules/cjs/loader:472:24
+      1  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1    9.1%        LazyCompile: ~formatProperty node:internal/util/inspect:1808:24
+      1  100.0%          LazyCompile: ~formatRaw node:internal/util/inspect:818:19
+      1  100.0%            LazyCompile: ~formatValue node:internal/util/inspect:743:21
+      1    9.1%        LazyCompile: ~findWithoutOptimization file:///home/amin/source/testSources/ParseDate/parse.date.js:7:31
+      1  100.0%          LazyCompile: ~ParseDate file:///home/amin/source/testSources/ParseDate/parse.date.js:3:18
+      1  100.0%            Script: ~<anonymous> file:///home/amin/source/testSources/ParseDate/server.js:1:1
+      1    9.1%        LazyCompile: ~cjsPreparseModuleExports node:internal/modules/esm/translators:190:34
+      1  100.0%          LazyCompile: ~commonjsStrategy node:internal/modules/esm/translators:146:60
+      1  100.0%            /usr/local/bin/node
+      1    9.1%        Function: ^unpackBase60 /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:66:23
+      1  100.0%          Function: ^arrayToInt /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:98:22
+      1  100.0%            Function: ^addToGuesses /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:323:24
+      1    9.1%        Function: ^getParseRegexForToken /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:805:35
+      1  100.0%          Function: ^configFromStringAndFormat /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2748:39
+      1  100.0%            Function: ^configFromISO /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2364:27
+      1    9.1%        Function: ^FastBuffer node:internal/buffer:958:14
+      1  100.0%          LazyCompile: ~createUnsafeBuffer node:internal/buffer:1059:28
+      1  100.0%            LazyCompile: ~allocate node:buffer:397:18
+      9    6.3%      LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      9  100.0%        LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      4   44.4%          LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:412:29
+      4  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      2   22.2%          Function: ~<anonymous> node:internal/source_map/source_map_cache:1:1
+      2  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1   11.1%          LazyCompile: ~initializeSourceMapsHandlers node:internal/bootstrap/pre_execution:451:38
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1   11.1%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1   11.1%          Function: ~<anonymous> node:internal/bootstrap/pre_execution:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    2.1%      Function: ^C node:internal/deps/cjs-module-lexer/dist/lexer:1:1152
+      3  100.0%        LazyCompile: ~parse node:internal/deps/cjs-module-lexer/dist/lexer:1:131
+      3  100.0%          LazyCompile: ~cjsPreparseModuleExports node:internal/modules/esm/translators:190:34
+      3  100.0%            LazyCompile: ~<anonymous> node:internal/modules/esm/translators:227:36
+      2    1.4%      LazyCompile: ~resolve node:path:1091:10
+      1   50.0%        LazyCompile: ~realpathSync node:fs:2410:22
+      1  100.0%          LazyCompile: ~finalizeResolution node:internal/modules/esm/resolve:367:28
+      1  100.0%            LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:926:23
+      1   50.0%        LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:81:28
+      1  100.0%          LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%            Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      2    1.4%      LazyCompile: ~realpathSync node:fs:2410:22
+      2  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      2  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      2  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:15:25
+      2    1.4%      LazyCompile: ~readFileHandle node:internal/fs/promises:411:30
+      1   50.0%        LazyCompile: ~readFile node:internal/fs/promises:838:24
+      1  100.0%          /usr/local/bin/node
+      1   50.0%        /usr/local/bin/node
+      2    1.4%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      2  100.0%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      2    1.4%      LazyCompile: ~onParseError node:internal/url:561:22
+      2  100.0%        /usr/local/bin/node
+      2  100.0%          LazyCompile: ~URL node:internal/url:634:14
+      2  100.0%            LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:926:23
+      2    1.4%      LazyCompile: ~moduleStrategy node:internal/modules/esm/translators:110:56
+      2  100.0%        LazyCompile: ~moduleProvider node:internal/modules/esm/loader:279:28
+      2  100.0%          /usr/local/bin/node
+      2    1.4%      LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      2  100.0%        LazyCompile: ~getStdout node:internal/bootstrap/switches/is_main_thread:125:19
+      2  100.0%          LazyCompile: ~get node:internal/console/constructor:203:14
+      2  100.0%            LazyCompile: ~value node:internal/console/constructor:321:20
+      2    1.4%      Function: ^URL node:internal/url:634:14
+      1   50.0%        LazyCompile: ~getPackageScopeConfig node:internal/modules/esm/resolve:224:31
+      1  100.0%          LazyCompile: ~getPackageType node:internal/modules/esm/resolve:789:24
+      1  100.0%            LazyCompile: ~getFileProtocolModuleFormat node:internal/modules/esm/get_format:75:37
+      1   50.0%        Function: ^URL node:internal/url:634:14
+      1  100.0%          LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:926:23
+      1  100.0%            LazyCompile: ~defaultResolve node:internal/modules/esm/resolve:1000:24
+      2    1.1%    Function: ^configFromISO /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2364:27
+      2  100.0%      Function: ^configFromString /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2525:30
+      2  100.0%        LazyCompile: ~configFromInput /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2986:29
+      2  100.0%          Function: ^prepareConfig /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2953:27
+      2  100.0%            Function: ^createFromConfig /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2942:30
+
+     33   11.4%  __write
+     20   60.6%    /usr/local/bin/node
+      2   10.0%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      2  100.0%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.0%      LazyCompile: ~toString node:buffer:782:46
+      1  100.0%        LazyCompile: ~readFileSync node:fs:450:22
+      1  100.0%          LazyCompile: ~cjsPreparseModuleExports node:internal/modules/esm/translators:190:34
+      1  100.0%            LazyCompile: ~commonjsStrategy node:internal/modules/esm/translators:146:60
+      1    5.0%      LazyCompile: ~setupWarningHandler node:internal/bootstrap/pre_execution:132:29
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.0%      LazyCompile: ~setupPerfHooks node:internal/bootstrap/pre_execution:218:24
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.0%      LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1    5.0%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:81:28
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.0%      LazyCompile: ~moduleProvider node:internal/modules/esm/loader:279:28
+      1  100.0%        /usr/local/bin/node
+      1    5.0%      LazyCompile: ~maybeCacheSourceMap node:internal/source_map/source_map_cache:74:29
+      1  100.0%        LazyCompile: ~moduleStrategy node:internal/modules/esm/translators:110:56
+      1  100.0%          LazyCompile: ~moduleProvider node:internal/modules/esm/loader:279:28
+      1  100.0%            /usr/local/bin/node
+      1    5.0%      LazyCompile: ~legacyMainResolve node:internal/modules/esm/resolve:275:27
+      1  100.0%        LazyCompile: ~packageResolve node:internal/modules/esm/resolve:838:24
+      1  100.0%          LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:926:23
+      1  100.0%            LazyCompile: ~defaultResolve node:internal/modules/esm/resolve:1000:24
+      1    5.0%      LazyCompile: ~isMoment /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:275:22
+      1  100.0%        LazyCompile: ~prepareConfig /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2953:27
+      1  100.0%          LazyCompile: ~createFromConfig /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2942:30
+      1  100.0%            LazyCompile: ~createLocalOrUTC /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:3009:30
+      1    5.0%      LazyCompile: ~initHooksExist node:internal/async_hooks:479:24
+      1  100.0%        LazyCompile: ~nextTick node:internal/process/task_queues:104:18
+      1  100.0%          LazyCompile: ~onwrite node:internal/streams/writable:426:17
+      1  100.0%            LazyCompile: ~afterWriteDispatched node:internal/stream_base_commons:155:30
+      1    5.0%      LazyCompile: ~debug node:internal/util/debuglog:76:15
+      1  100.0%        LazyCompile: ~logger node:internal/util/debuglog:96:18
+      1  100.0%          LazyCompile: ~set node:internal/modules/esm/module_map:23:6
+      1  100.0%            LazyCompile: ~#createModuleJob node:internal/modules/esm/loader:278:19
+      1    5.0%      LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      1  100.0%        LazyCompile: ~getStdout node:internal/bootstrap/switches/is_main_thread:125:19
+      1  100.0%          LazyCompile: ~get node:internal/console/constructor:203:14
+      1  100.0%            LazyCompile: ~value node:internal/console/constructor:321:20
+      1    5.0%      LazyCompile: ~addZone /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:407:19
+      1  100.0%        LazyCompile: ~loadData /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:528:20
+      1  100.0%          Function: ~<anonymous> /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/index.js:1:1
+      1  100.0%            LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1051:37
+      1    5.0%      LazyCompile: ~addTimeToArrayFromToken /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:858:37
+      1  100.0%        LazyCompile: ~configFromStringAndFormat /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2748:39
+      1  100.0%          LazyCompile: ~configFromISO /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2364:27
+      1  100.0%            LazyCompile: ~configFromString /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2525:30
+      1    5.0%      LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1051:37
+      1  100.0%        LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1106:37
+      1  100.0%          LazyCompile: ~Module.load node:internal/modules/cjs/loader:963:33
+      1  100.0%            LazyCompile: ~Module._load node:internal/modules/cjs/loader:757:24
+      1    5.0%      LazyCompile: ~Module node:internal/modules/cjs/loader:172:16
+      1  100.0%        LazyCompile: ~cjsPreparseModuleExports node:internal/modules/esm/translators:190:34
+      1  100.0%          LazyCompile: ~commonjsStrategy node:internal/modules/esm/translators:146:60
+      1  100.0%            /usr/local/bin/node
+      1    5.0%      LazyCompile: ~Duration /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:3157:22
+      1  100.0%        LazyCompile: ~createDuration /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:3463:28
+      1  100.0%          LazyCompile: ~getSetOffset /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:3318:26
+      1  100.0%            Function: ^<anonymous> /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:662:19
+      1    5.0%      LazyCompile: ~C node:internal/deps/cjs-module-lexer/dist/lexer:1:1152
+      1  100.0%        LazyCompile: ~parse node:internal/deps/cjs-module-lexer/dist/lexer:1:131
+      1  100.0%          LazyCompile: ~cjsPreparseModuleExports node:internal/modules/esm/translators:190:34
+      1  100.0%            LazyCompile: ~<anonymous> node:internal/modules/esm/translators:227:36
+
+     20    6.9%  fwrite
+     17   85.0%    /usr/local/bin/node
+      2   11.8%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      2  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      2  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:15:25
+      2  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:70:31
+      2   11.8%      LazyCompile: ~realpathSync node:fs:2410:22
+      2  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      2  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      2  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:15:25
+      2   11.8%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:81:28
+      2  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      2  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.9%      LazyCompile: ~value node:internal/console/constructor:321:20
+      1  100.0%        LazyCompile: ~log node:internal/console/constructor:359:6
+      1  100.0%          /usr/local/bin/node
+      1  100.0%            Script: ~<anonymous> file:///home/amin/source/testSources/ParseDate/server.js:1:1
+      1    5.9%      LazyCompile: ~stringify node:internal/modules/esm/translators:90:19
+      1  100.0%        LazyCompile: ~moduleStrategy node:internal/modules/esm/translators:110:56
+      1  100.0%          LazyCompile: ~moduleProvider node:internal/modules/esm/loader:279:28
+      1  100.0%            /usr/local/bin/node
+      1    5.9%      LazyCompile: ~setupWarningHandler node:internal/bootstrap/pre_execution:132:29
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.9%      LazyCompile: ~setupDebugEnv node:internal/bootstrap/pre_execution:184:23
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    5.9%      LazyCompile: ~parseFileMode node:internal/validators:59:23
+      1  100.0%        LazyCompile: ~open node:internal/fs/promises:501:20
+      1  100.0%          LazyCompile: ~readFile node:internal/fs/promises:838:24
+      1  100.0%            LazyCompile: ~defaultGetSource node:internal/modules/esm/get_source:25:32
+      1    5.9%      LazyCompile: ~onParseError node:internal/url:561:22
+      1  100.0%        /usr/local/bin/node
+      1  100.0%          LazyCompile: ~URL node:internal/url:634:14
+      1  100.0%            LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:926:23
+      1    5.9%      LazyCompile: ~moment.updateOffset /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:605:33
+      1  100.0%        LazyCompile: ~fn.tz /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:631:19
+      1  100.0%          Function: ^tz /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:558:14
+      1  100.0%            Function: ^<anonymous> file:///home/amin/source/testSources/ParseDate/parse.date.js:10:52
+      1    5.9%      LazyCompile: ~getSetOffset /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:3318:26
+      1  100.0%        LazyCompile: ~<anonymous> /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:662:19
+      1  100.0%          LazyCompile: ~moment.updateOffset /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:605:33
+      1  100.0%            LazyCompile: ~fn.tz /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:631:19
+      1    5.9%      LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      1  100.0%        LazyCompile: ~Socket node:net:283:16
+      1  100.0%          LazyCompile: ~WriteStream node:tty:84:21
+      1  100.0%            LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      1    5.9%      Function: ~<anonymous> node:internal/modules/cjs/helpers:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/source_map/source_map_cache:1:1
+      1    5.9%      Function: ~<anonymous> node:internal/fs/rimraf:1:1
+      1  100.0%        Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/fs/promises:1:1
+
+     13    4.5%  /usr/lib/x86_64-linux-gnu/libc-2.31.so
+      9   69.2%    /usr/local/bin/node
+      1   11.1%      LazyCompile: ~tz /home/amin/source/testSources/ParseDate/node_modules/moment-timezone/moment-timezone.js:558:14
+      1  100.0%        Script: ~<anonymous> file:///home/amin/source/testSources/ParseDate/server.js:1:1
+      1  100.0%          /usr/local/bin/node
+      1  100.0%            /usr/local/bin/node
+      1   11.1%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:15:25
+      1  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:70:31
+      1   11.1%      LazyCompile: ~stringify node:internal/modules/esm/translators:90:19
+      1  100.0%        LazyCompile: ~moduleStrategy node:internal/modules/esm/translators:110:56
+      1  100.0%          LazyCompile: ~moduleProvider node:internal/modules/esm/loader:279:28
+      1  100.0%            /usr/local/bin/node
+      1   11.1%      LazyCompile: ~realpathSync node:fs:2410:22
+      1  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:15:25
+      1   11.1%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1   11.1%      LazyCompile: ~getPackageType node:internal/modules/esm/resolve:789:24
+      1  100.0%        LazyCompile: ~getFileProtocolModuleFormat node:internal/modules/esm/get_format:75:37
+      1  100.0%          LazyCompile: ~defaultGetFormatWithoutErrors node:internal/modules/esm/get_format:92:39
+      1  100.0%            LazyCompile: ~defaultResolve node:internal/modules/esm/resolve:1000:24
+      1   11.1%      LazyCompile: ~Module._extensions..json node:internal/modules/cjs/loader:1154:39
+      1  100.0%        LazyCompile: ~Module.load node:internal/modules/cjs/loader:963:33
+      1  100.0%          LazyCompile: ~Module._load node:internal/modules/cjs/loader:757:24
+      1  100.0%            LazyCompile: ~Module.require node:internal/modules/cjs/loader:991:36
+      1   11.1%      Function: ~<anonymous> node:internal/process/esm_loader:1:1
+      1  100.0%        Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/modules/cjs/loader:1:1
+      1   11.1%      /usr/local/bin/node
+      1  100.0%        Function: ^configFromStringAndFormat /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2748:39
+      1  100.0%          Function: ^configFromISO /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2364:27
+      1  100.0%            Function: ^configFromString /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2525:30
+
+     11    3.8%  std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)
+      9   81.8%    /usr/local/bin/node
+      2   22.2%      Function: ~<anonymous> node:internal/fs/promises:1:1
+      2  100.0%        Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2  100.0%          Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      2  100.0%            Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      1   11.1%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:15:25
+      1  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:70:31
+      1   11.1%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      1  100.0%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1   11.1%      LazyCompile: ~onParseError node:internal/url:561:22
+      1  100.0%        /usr/local/bin/node
+      1  100.0%          LazyCompile: ~URL node:internal/url:634:14
+      1  100.0%            LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:926:23
+      1   11.1%      LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      1  100.0%        LazyCompile: ~getStdout node:internal/bootstrap/switches/is_main_thread:125:19
+      1  100.0%          LazyCompile: ~get node:internal/console/constructor:203:14
+      1  100.0%            LazyCompile: ~value node:internal/console/constructor:321:20
+      1   11.1%      LazyCompile: ~configFromISO /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2364:27
+      1  100.0%        LazyCompile: ~configFromString /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2525:30
+      1  100.0%          LazyCompile: ~configFromInput /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2986:29
+      1  100.0%            LazyCompile: ~prepareConfig /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2953:27
+      1   11.1%      LazyCompile: ~Socket._writeGeneric node:net:769:42
+      1  100.0%        LazyCompile: ~Socket._write node:net:806:35
+      1  100.0%          LazyCompile: ~writeOrBuffer node:internal/streams/writable:366:23
+      1  100.0%            LazyCompile: ~_write node:internal/streams/writable:284:16
+      1   11.1%      /usr/local/bin/node
+      1  100.0%        Script: ~<anonymous> file:///home/amin/source/testSources/ParseDate/server.js:1:1
+      1  100.0%          /usr/local/bin/node
+      1  100.0%            /usr/local/bin/node
+
+     10    3.5%  _IO_file_xsputn
+      9   90.0%    /usr/local/bin/node
+      2   22.2%      LazyCompile: ~setupWarningHandler node:internal/bootstrap/pre_execution:132:29
+      2  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:22:36
+      2  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1   11.1%      LazyCompile: ~value node:internal/console/constructor:321:20
+      1  100.0%        LazyCompile: ~log node:internal/console/constructor:359:6
+      1  100.0%          /usr/local/bin/node
+      1  100.0%            Script: ~<anonymous> file:///home/amin/source/testSources/ParseDate/server.js:1:1
+      1   11.1%      LazyCompile: ~nextTick node:internal/process/task_queues:104:18
+      1  100.0%        LazyCompile: ~onwrite node:internal/streams/writable:426:17
+      1  100.0%          LazyCompile: ~afterWriteDispatched node:internal/stream_base_commons:155:30
+      1  100.0%            LazyCompile: ~writeGeneric node:internal/stream_base_commons:147:22
+      1   11.1%      LazyCompile: ~daysInMonth /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:895:25
+      1  100.0%        Function: ^checkOverflow /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2268:27
+      1  100.0%          Function: ^configFromStringAndFormat /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2748:39
+      1  100.0%            Function: ^configFromISO /home/amin/source/testSources/ParseDate/node_modules/moment/moment.js:2364:27
+      1   11.1%      LazyCompile: ~ReadableState node:internal/streams/readable:83:23
+      1  100.0%        LazyCompile: ~Readable node:internal/streams/readable:186:18
+      1  100.0%          LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      1  100.0%            LazyCompile: ~Socket node:net:283:16
+      1   11.1%      LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      1  100.0%        LazyCompile: ~Socket node:net:283:16
+      1  100.0%          LazyCompile: ~WriteStream node:tty:84:21
+      1  100.0%            LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      1   11.1%      Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1   11.1%      Function: ~<anonymous> node:internal/fs/rimraf:1:1
+      1  100.0%        Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/fs/promises:1:1
+
+      5    1.7%  __GI___pthread_mutex_unlock
+
+      3    1.0%  std::ostream::sentry::sentry(std::ostream&)
+      3  100.0%    /usr/local/bin/node
+      1   33.3%      LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1011:18
+      1  100.0%        LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1051:37
+      1  100.0%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1106:37
+      1  100.0%            LazyCompile: ~Module.load node:internal/modules/cjs/loader:963:33
+      1   33.3%      LazyCompile: ~value node:internal/console/constructor:321:20
+      1  100.0%        LazyCompile: ~log node:internal/console/constructor:359:6
+      1  100.0%          /usr/local/bin/node
+      1  100.0%            Script: ~<anonymous> file:///home/amin/source/testSources/ParseDate/server.js:1:1
+      1   33.3%      LazyCompile: ~statSync node:fs:1530:18
+      1  100.0%        LazyCompile: ~tryStatSync node:internal/modules/esm/resolve:160:3
+      1  100.0%          LazyCompile: ~finalizeResolution node:internal/modules/esm/resolve:367:28
+      1  100.0%            LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:926:23
+

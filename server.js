@@ -8,7 +8,7 @@ import ThirdOptimizedParseDate from './third.optimized.js';
 const startDate = new Date();
 startDate.setDate(startDate.getUTCDate()-209);
 //creatin an array hourly based dates
-const dates = createDates(50000,startDate);
+const dates = createDates(50,startDate);
  //creating date range object
  const firstRandomIndex = Math.floor( Math.random()*(dates.length-1));
  const secondRandomIndex = Math.floor(Math.random()*(dates.length-1));
@@ -20,7 +20,7 @@ const dates = createDates(50000,startDate);
 console.log(dateRange,'\n');
 
 ParseDate(dates,dateRange);
-OptimizedParseDate(dates,dateRange);
-SecondOptimizedParseDate(dates,dateRange);
+// OptimizedParseDate(dates,dateRange);
+// SecondOptimizedParseDate(dates,dateRange);
 
-ThirdOptimizedParseDate(dates,dateRange);
+// ThirdOptimizedParseDate(dates,dateRange);
